@@ -26,9 +26,9 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake>  {
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
      * @param earthquake is the list of {@link Earthquake}s to be displayed.
      */
-    public EarthquakeAdapter(Context context, ArrayList<Earthquake> earthquake, int colorResourceId) {
+    public EarthquakeAdapter(Context context, ArrayList<Earthquake> earthquake) {
         super(context, 0,earthquake);
-        mColorResourceId = colorResourceId;
+
     }
 
     @Override
@@ -40,40 +40,29 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake>  {
                     R.layout.list_item, parent, false);
         }
 
-        // Get the {@link Word} object located at this position in the list
-        Word currentWord = getItem(position);
+        // Get the {@link Earthquake} object located at this position in the list
+        Earthquake currentEarthquake = getItem(position);
 
-        // Find the TextView in the list_item.xml layout with the ID miwok_text_view.
-        TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
-        // Get the Miwok translation from the currentWord object and set this text on
-        // the Miwok TextView.
-        miwokTextView.setText(currentWord.getMiwokTranslation());
+        // Find the TextView in the list_item.xml layout with the ID place_text_view.
+        TextView placeTextView = (TextView) listItemView.findViewById(R.id.place_text_view);
+        // Get the EarthquakePlace from the currentEarthquake object and set this text on
+        // the PlaceTextView.
+        placeTextView.setText(currentEarthquake.getEarthquakePlace());
 
-        // Find the TextView in the list_item.xml layout with the ID default_text_view.
-        TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
-        // Get the default translation from the currentWord object and set this text on
-        // the default TextView.
-        defaultTextView.setText(currentWord.getDefaultTranslation());
+        // Find the TextView in the list_item.xml layout with the ID mag_text_view.
+        TextView magTextView = (TextView) listItemView.findViewById(R.id.mag_text_view);
+        // Get the magnitude  from the currentEarthquake object and set this text on
+        // the magTextView.
+        // converting EarthqaukeMag from double into String
+        magTextView.setText( String.valueOf(currentEarthquake.getEarthquakeMag()));
 
-        // Find the ImageView in the list_item.xml layout with the ID image.
-        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
-        // Set the ImageView to the image resource specified in the current Word
-        if(currentWord.hasImage()) {
-            imageView.setImageResource(currentWord.getImageResourceId());
-            //make sure the view is visible
-            imageView.setVisibility(View.VISIBLE);
-        } else{
-            // view is invisible without extra space
-            imageView.setVisibility(View.GONE);
-        }
-        //Set the theme color for the list item
-        View textContainer = listItemView.findViewById(R.id.text_container);
-        //Find the color that resource ID maps to
-        int color = ContextCompat.getColor(getContext(),mColorResourceId);
-        //Set the background color of the tet container View
-        textContainer.setBackgroundColor(color);
-        // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
-        // the ListView.
+        // Find the TextView in the list_item.xml layout with the ID date_text_view.
+        TextView dateTextView = (TextView) listItemView.findViewById(R.id.date_text_view);
+        // Get the date  from the currentEarthquake object and set this text on
+        // the dateTextView.
+        // converting EarthqaukeDate from Date into String
+        dateTextView.setText( String.valueOf(currentEarthquake.getEarthquakeDate()));
+
         return listItemView;
     }
 }
