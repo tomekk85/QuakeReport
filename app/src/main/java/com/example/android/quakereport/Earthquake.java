@@ -15,15 +15,15 @@ public class Earthquake {
     private double  mEarthquakeMag;
 
     /** Image resource ID for the word */
-    private Date mEarthquakeDate;
+    private String mEarthquakeDate;
     /**
      * Create a new Word object.
      *
-     * @param earthquakePlace is name of location that earthqauke took place
+     * @param earthquakePlace is name of location that earthquake took place
      * @param earthquakeMag magnitude of earthquake
      * @param earthquakeDate is date when  earthquake took place    */
 
-    public Earthquake(String earthquakePlace, double earthquakeMag, Date earthquakeDate) {
+    public Earthquake(String earthquakePlace, double earthquakeMag, String earthquakeDate) {
         mEarthquakePlace = earthquakePlace;
         mEarthquakeMag = earthquakeMag;
         mEarthquakeDate =  earthquakeDate;
@@ -32,23 +32,23 @@ public class Earthquake {
 
 
     /**
-     * Get the place of earthqauke.
+     * Get the place of earthquake.
      */
     public String getEarthquakePlace() {
         return mEarthquakePlace;
     }
 
     /**
-     * Get the earthqauke magnitude.
+     * Get the earthquake magnitude.
      */
     public double getEarthquakeMag() {
         return mEarthquakeMag;
     }
 
     /**
-     * Get the date of earthqauke.
+     * Get the date of earthquake.
      */
-    public Date getEarthquakeDate() {
+    public String getEarthquakeDate() {
         return mEarthquakeDate;
     }
 
